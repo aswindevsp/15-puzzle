@@ -83,8 +83,9 @@ def gui(action_sequence: list, num_list: list, elapsed_time: float):
 
     pygame.display.update()
 
+    pygame.time.delay(1000)
     for action in action_sequence:
-        # pygame.time.delay(100)
+        pygame.time.delay(100)
         xy_dist = [None, None]
 
         if action == LEFT:
@@ -104,6 +105,7 @@ def gui(action_sequence: list, num_list: list, elapsed_time: float):
                 tile.move_it(xy_dist)
                 break
 
+
     screen.fill(BLACK, [200, 515, 200, 85])
     moves_display("Moves: " + str(move_counter))
     pygame.display.update()
@@ -112,3 +114,13 @@ def gui(action_sequence: list, num_list: list, elapsed_time: float):
     show_congrats()
     victory.play()
     time.sleep(3)
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        pygame.display.update()
+        clock.tick(60)
+
+    pygame.quit()
