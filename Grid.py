@@ -11,17 +11,16 @@ class Grid(object):
         self.parent = None
         self.G = 0
         self.H = 0
-        self.L = 0
 
     def __hash__(self):
-        return hash((tuple(self.nums), self.parent, self.G, self.H, self.L))
+        return hash((tuple(self.nums), self.parent, self.G, self.H))
 
     def __eq__(self, other):
         return self.nums == other.nums
 
     # for PriorityQueue's sort
     def __lt__(self, other):
-        return (self.G + self.H + self.L) < (other.G + other.H + other.L)
+        return (self.G + self.H) < (other.G + other.H)
 
     # get blank's place
     def blank(self) -> int:

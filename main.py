@@ -31,7 +31,8 @@ def get_methods(sequence: list) -> list:
 
 if __name__ == "__main__":
     # default state
-    init = [5, 1, 2, 3, 9, 6, 11, 4, 7, 8, 0, 12, 13, 14, 15, 10]
+    # init = [5, 1, 2, 3, 9, 6, 11, 4, 7, 8, 0, 12, 13, 14, 15, 10]
+    init = [6, 9, 1, 4, 2, 5, 13, 3, 10, 14, 11, 7, 0, 15, 12, 8]
     goal = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15, 0]
 
     # uncommit this line to increase difficulty
