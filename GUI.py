@@ -66,6 +66,12 @@ class Tile(object):
 
 
 def gui(action_sequence: list, num_list: list, elapsed_time: float):
+
+    def clear_solving():
+        rect = pygame.Rect(0, 0, 598, 60)  # Adjust the dimensions as needed
+        pygame.draw.rect(screen, (255, 255, 255), rect)
+        pygame.display.update()
+
     def moves_display(my_text):
         txt = font.render(my_text, True, BLACK)
         textRect = txt.get_rect(center=(299, 550))
@@ -83,7 +89,7 @@ def gui(action_sequence: list, num_list: list, elapsed_time: float):
     empty_x = 0
     empty_y = 0
 
-    
+    clear_solving() 
     start_button.draw()
     #pygame.draw.rect(screen, WHITE, (98, 98, 403, 403))
     for y in range(100, 500, 100):
@@ -141,3 +147,34 @@ def gui(action_sequence: list, num_list: list, elapsed_time: float):
         clock.tick(60)
 
     pygame.quit()
+
+def initial_gui(num_list: list):
+    def show_solving():
+        txt = font.render("Solving...", True, BLACK)
+        textRect = txt.get_rect(center=(299, 29))
+        screen.blit(txt, textRect)
+        pygame.display.update()
+
+
+    listOfTiles = []
+    index = 0
+    
+    start_button.draw()
+    show_solving()
+    #pygame.draw.rect(screen, WHITE, (98, 98, 403, 403))
+    for y in range(100, 500, 100):
+        for x in range(100, 500, 100):
+            if index < 16:
+                da_num = num_list[index]
+                if da_num != 0:
+                    new_tile = Tile(da_num, x, y, start_img)
+                    listOfTiles.append(new_tile)
+                    new_tile.draw()
+                else:
+                    empty_x = x
+                    empty_y = y
+                index += 1
+
+    pygame.display.update()
+
+    
